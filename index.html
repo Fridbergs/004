@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./add-image-style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Lägg in bild</p>
+    <p>
+      Dubbelklicka på bilden för att ändra storlek - mouse up för att avsluta
+      resize-läge.
+    </p>
+
+    <button id="uploadBtn">Välj fil</button>
+    <span id="fileName"></span>
+    <input type="file" id="fileInput" accept="image/*" style="display: none" />
+
+    <div id="editableDiv" contenteditable="true"></div>
+    <button id="saveButton">Spara Anteckning</button>
+    <button id="getButton">Hämta Anteckning</button>
+    <div id="contentDisplayDiv" contenteditable="true"></div>
+
+    <script src="./js/add-image.js"></script>
+  </body>
+</html>
