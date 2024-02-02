@@ -114,7 +114,7 @@ const mutationCallback: MutationCallback = (mutationsList, observer) => {
   }
 };
 
-// TypeScript-kod för att hantera drag-and-drop
+// Kod för att hantera drag-and-drop
 class DraggableImage {
   private imageElement: HTMLImageElement;
   private isDragging: boolean = false;
@@ -186,44 +186,4 @@ class DraggableImage {
   private endDrag(): void {
     this.isDragging = false;
   }
-}
-
-//Funktion för att ändra storlek på bilden;
-function addResizeListeners(img: HTMLImageElement): void {
-  let isResizing = false;
-  let startX: number, startY: number, startWidth: number, startHeight: number;
-
-  img.addEventListener("dblclick", () => {
-    isResizing = !isResizing;
-    img.classList.toggle("resizable");
-    console.log("Dubbelklickat: isResizing är nu", isResizing);
-    if (img.classList.contains("resizable")) {
-      console.log("Resizable klass tillagd");
-    } else {
-      console.log("Resizable klass borttagen");
-    }
-  });
-
-  img.addEventListener("mousedown", (e: MouseEvent) => {
-    if (isResizing) {
-      startX = e.clientX;
-      startY = e.clientY;
-      startWidth = img.offsetWidth;
-      startHeight = img.offsetHeight;
-      e.preventDefault();
-    }
-  });
-
-  document.addEventListener("mousemove", (e: MouseEvent) => {
-    if (isResizing) {
-      const newWidth = startWidth + e.clientX - startX;
-      const newHeight = startHeight + e.clientY - startY;
-      img.style.width = newWidth + "px";
-      img.style.height = newHeight + "px";
-    }
-  });
-
-  document.addEventListener("mouseup", () => {
-    isResizing = false;
-  });
 }
