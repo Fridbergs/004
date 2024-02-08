@@ -29,6 +29,10 @@ document
         return;
       }
 
+      // Linus nya kod
+      img.style.height = "50%"; // Höjden justeras för att behålla bildens proportioner
+      img.style.width = "auto";
+
       editableDiv.appendChild(img);
       new DraggableImage(img); // Skapa en ny DraggableImage för den uppladdade bilden
       console.log(`'editableDiv' innehåller nu bilden med ID: ${img.id}`);
@@ -52,11 +56,12 @@ document.getElementById("uploadBtn")!.addEventListener("click", function () {
 document.getElementById("fileInput")!.addEventListener("change", function () {
   const input = this as FileInputElement;
   const file = input.files[0];
-  if (file) {
-    document.getElementById("fileName")!.textContent = file.name;
-  } else {
-    document.getElementById("fileName")!.textContent = "Ingen fil vald";
-  }
+  //Linus "display-none"
+  // if (file) {
+  //   document.getElementById("fileName")!.textContent = file.name;
+  // } else {
+  //   document.getElementById("fileName")!.textContent = "Ingen fil vald";
+  // }
 });
 
 // Funktion för att spara `div`-innehållet i localStorage
@@ -102,17 +107,6 @@ document.getElementById("getButton")!.addEventListener("click", function () {
 });
 
 saveDivContent();
-
-// Funktion som körs när mutationer observeras
-const mutationCallback: MutationCallback = (mutationsList, observer) => {
-  for (const mutation of mutationsList) {
-    if (mutation.type === "childList") {
-      console.log("Ett barn-element har lagts till eller tagits bort.");
-    } else if (mutation.type === "attributes") {
-      console.log(`Attributet ${mutation.attributeName} har modifierats.`);
-    }
-  }
-};
 
 // Kod för att hantera drag-and-drop
 class DraggableImage {
